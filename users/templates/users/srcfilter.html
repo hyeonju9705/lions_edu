@@ -4,43 +4,56 @@
 <section class="content-section bg-primary text-center" id="services">
     <div class="container">
       <div class="content-section-heading">
-        <h3 class="text-secondary mb-3">검색필터</h3>
-        <h2 class="mb-5">원하는 멘토를 선택하세요</h2>
+        <h3 class="text-secondary mb-3">멘토 선택</h3>
+        <h2 class="mb-3">원하는 멘토를 선택하세요</h2>
       </div>
       <div class="row">
-        <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-          
-          <h4>
+       
+        <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
+        <form action="{% url 'srcfilter' %}" method="POST">
+             {% csrf_token %}
+          <h3>
             <strong>지역</strong>
-          </h4>
+          </h3>
+      
           <span class="caption-content">
-                <form action="" method="POST">
-                   {% csrf_token %}
-                  <input type="checkbox" name="options" id="option1" value="">  오스트리아
-                  <input type="checkbox" name="options" id="option2" value="">  크로아티아
-                  <input type="checkbox" name="options" id="option3" value="">  체코
-                  <input type="checkbox" name="options" id="option2" value="">  헝가리
-                  <input type="hidden" name="ran_nation" value={{selected_pic}}>
-                  <input type="hidden" name="redirect_path" value={{request.path}}>
-                  <input type="submit" value="선택">
-                </form>
-              </span>
-          <p class="text-faded mb-0">Looks great on any screen size!</p>
+              <center><input type="radio" name="loc" id="loc1" value="seoul">  서울 </center>
+              <center><input type="radio" name="loc" id="loc2" value="kyeonggi">  경기 </center>
+              <center><input type="radio" name="loc" id="loc3" value="chungcheong">  충청 </center>
+              <center><input type="radio" name="loc" id="loc4" value="jeonra">  전라 </center>
+              <center><input type="radio" name="loc" id="loc5" value="kyeongsang">  경상</center>
+          </span>
+         
         </div>
         <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
          
-          <h4>
+          <h3>
             <strong>과목</strong>
-          </h4>
-          <p class="text-faded mb-0">Freshly redesigned for Bootstrap 4.</p>
+          </h3>
+          <span class="caption-content">
+            <center>  <input type="radio" name="sub" id="sub1" value="korean">  국어 </center>
+            <center>  <input type="radio" name="sub" id="sub2" value="math">  수학 </center>
+            <center>  <input type="radio" name="sub" id="sub3" value="science">  과학 </center>
+            <center>  <input type="radio" name="sub" id="sub4" value="society">  사회 </center>
+            <center>  <input type="radio" name="sub" id="sub5" value="english">  영어 </center>
+         </span>
+         
         </div>
         <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
           
-          <h4>
+          <h3>
             <strong>성별</strong>
-          </h4>
-          
+          </h3>
+           <span class="caption-content">
+              <input type="radio" name="gender" id="gender1" value="man">  남
+              <input type="radio" name="gender" id="gender2" value="woman">  여
+           </span>
         </div>
+        <br> 
+        <div class="div_select">
+          <input type="submit" value="선택">
+        </div>
+        </form>
       </div>
     </div>
   </section>

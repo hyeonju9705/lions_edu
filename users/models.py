@@ -1,6 +1,7 @@
 from django.db import models
 from django import forms
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.contrib.auth import get_user_model
 # Create your models here.
 
 class Mentee(models.Model):
@@ -30,6 +31,7 @@ class Mentee(models.Model):
     subject = models.CharField(max_length=10, choices=subject_choices) #등록
     place = models.CharField(max_length=15, choices=place_choices) #등록
     grade = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
+    user = models.ForeignKey(get_user_model(), on_delete="CASCADE", default=1)
     
     def __str__(self):
         return self.name
@@ -61,6 +63,8 @@ class Mentor(models.Model):
     place = models.CharField(max_length=15, choices=place_choices)
     license = models.FileField(upload_to='uploads/')
     text = models.TextField()
+    user = models.ForeignKey(get_user_model(), on_delete="CASCADE", default=1)
+
     
     def __str__(self):
         return self.name
