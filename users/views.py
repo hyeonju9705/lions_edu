@@ -3,6 +3,7 @@ from .models import Mentee
 from .models import Mentor
 from django.contrib import auth
 from .models import Lesson
+import pdb
 # Create your views here.
 
 #def list_mentor(request):
@@ -39,9 +40,9 @@ def login(request):
             
         userSelection = request.POST['men']
         if userSelection == 'mentee':
-            return render(request, 'users/srcfilter.html')
+            return redirect('srcfilter')
         else:
-            return render(request, 'users/main_mentor.html')
+            return redirect('main_mentor')
     else:
         return render(request, 'users/login.html')
     
