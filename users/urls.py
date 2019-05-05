@@ -13,5 +13,5 @@ urlpatterns = [
     path('lesson/<int:id>/', views.lesson, name="lesson"),
     path('mentor_detail/<int:id>/', views.mentor_detail, name="mentor_detail"),
     path('choice/', views.choice, name="choice"),
-    path('signup_2/', views.signup_2, name="signup_2"),
+    path('lesson_detail/<int:id>/', views.lesson_detail, name="lesson_detail"),
 ]

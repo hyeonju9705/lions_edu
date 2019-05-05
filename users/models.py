@@ -27,6 +27,8 @@ class Mentee(models.Model):
     name = models.CharField(max_length=100) #회원가입
     age = models.CharField(max_length=50) #회원가입
     gender = models.CharField(max_length=5, choices=gender_choices) #회원가입
+    id_mentee = models.CharField(max_length=10)
+    password = models.CharField(max_length=10)
     phone_number = models.CharField(max_length=12) #회원가입
     subject = models.CharField(max_length=10, choices=subject_choices) #등록
     place = models.CharField(max_length=15, choices=place_choices) #등록
@@ -59,6 +61,8 @@ class Mentor(models.Model):
     name = models.CharField(max_length=100) #회원가입
     age = models.CharField(max_length=50) #회원가입
     gender = models.CharField(max_length=5, choices=gender_choices) #회원가입
+    id_mentor = models.CharField(max_length=10)
+    password = models.CharField(max_length=10)
     subject = models.CharField(max_length=10, choices=subject_choices) #등록
     place = models.CharField(max_length=15, choices=place_choices)
     phone_number = models.CharField(max_length=12)
@@ -95,7 +99,9 @@ class Lesson(models.Model):
     name = models.CharField(max_length=100)
     age = models.CharField(max_length=50)
     gender = models.CharField(max_length=5, choices=gender_choices) 
-    phone_number = models.CharField(max_length=12) 
+    phone_number = models.CharField(max_length=13)
+    mentee_id = models.IntegerField()
+    mentor_id = models.IntegerField()
     place = models.CharField(max_length=15, choices=place_choices)
     grade = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
     text = models.TextField(max_length=500)

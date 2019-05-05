@@ -1,27 +1,81 @@
 {% extends 'base.html' %}
-
+{% load staticfiles %}
 {% block content %}
+<section class="content-section bg-primary text-center" id="services">
+    <div class="row div_signup">
+        <div>
+            <div>
+                <h3 class="text-secondary mb-3">회원 가입</h3>
+            </div>
+            <div style="float:right">
+                <form action="{% url 'signup_mentee' %}" method="POST">
+                    {% csrf_token %}
+                    <label>ID</label>
+                    <input type="text" name="id_mentee" /><br><br>
 
-<h1>Sign Up!</h1>
-{{ user.id }}
-<form method="POST" action="{% url 'signup_mentee'%}">
+                    <label>비밀번호</label>
+                    <input type="password" name="password" /><br><br>
 
-{% csrf_token %}
-    Username:
-    <br>
-    <input name="username"  type="text" value="{{ user.username }}">
-    <br>
-    Password:
-    <br>
-    <input name="password1"  type="password" value="{{ user.password }}">
-    <br>
-    Confirm Password:
-    <br>
-    <input name="password2"  type="password">
-    <br>
-    <br>
-    <input class="btn btn-primary" type="submit" value="Sign Up!"></a>
+                    <label>이름</label>
+                    <input type="text" name="name" /><br><br>
 
+                    <label>나이</label>
+                    <input type="text" name="age" /><br><br>
+
+                    <label>전화번호</label>
+                    <input type="text" name="phone_number" /><br><br>
+            </div>
+        </div>
+        <div>
+            <h3>
+                <strong>지역</strong>
+            </h3>
+
+            <span class="caption-content">
+                <center><input type="radio" name="place" id="loc1" value="{{ user.place }}"><label
+                        for="loc1"><span></span>서울</label></center>
+                <center><input type="radio" name="place" id="loc2" value="{{ user.place }}"><label
+                        for="loc2"><span></span>경기</label></center>
+                <center><input type="radio" name="place" id="loc3" value="{{ user.place }}"><label
+                        for="loc3"><span></span>충청</label></center>
+                <center><input type="radio" name="place" id="loc4" value="{{ user.place }}"><label
+                        for="loc4"><span></span>전라</label></center>
+                <center><input type="radio" name="place" id="loc5" value="{{ user.place }}"><label
+                        for="loc5"><span></span>경상</label></center>
+            </span><br>
+        </div>
+        <div>
+            <h3>
+                <strong>과목</strong>
+            </h3>
+            <span class="caption-content">
+                <center> <input type="radio" name="subject" id="sub1" value="{{ user.subject }}"><label
+                        for="sub1"><span></span>국어</label></center>
+                <center> <input type="radio" name="subject" id="sub2" value="{{ user.subject }}"><label
+                        for="sub2"><span></span>수학</label></center>
+                <center> <input type="radio" name="subject" id="sub3" value="{{ user.subject }}"><label
+                        for="sub3"><span></span>과학</label></center>
+                <center> <input type="radio" name="subject" id="sub4" value="{{ user.subject }}"><label
+                        for="sub4"><span></span>사회</label></center>
+                <center> <input type="radio" name="subject" id="sub5" value="{{ user.subject }}"><label
+                        for="sub5"><span></span>영어</label></center>
+            </span><br>
+        </div>
+        <div>
+            <h3>
+                <strong>성별</strong>
+            </h3>
+            <span class="caption-content">
+                <input type="radio" name="gender" id="gender1" value="{{ user.gender }}"><label
+                    for="gender1"><span></span>남</label>
+                <input type="radio" name="gender" id="gender2" value="{{ user.gender }}"><label
+                    for="gender2"><span></span>여</label>
+            </span><br>
+        </div>
+        <div class="div_select">
+          <input type="submit" value="가입" class="btn btn-xl btn-secondary">
+        </div>
+    </div>
     </form>
-
+</section>
 {% endblock %}

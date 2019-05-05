@@ -11,8 +11,12 @@
 <h3 style="text-align: center">Login</h3>
 <div class="login_div">
     
-    <form method="POST" action="{% url 'login_mentor'%}">
+      <input type="radio" name="chk_info" value="mentor_check"/>멘토
+      <input type="radio" name="chk_info" value="mentee_check"  checked/>멘티
+        <input type="radio" aria-label="Radio button for following text input">
+            
     
+    <br>
         {% csrf_token %}
         Username:
         <br>
@@ -23,12 +27,14 @@
         <input name="password" type="password" value="">
         <br>
         <br>
-        <input class="btn btn-primary" type="submit" value="Login">
+        
+        <a href="{%url 'main_mentor'%}"><input class="btn btn-primary" type="submit" value="Login"></a>
         <br>
         <br>
     </form>
-    <a href="{% url 'signup_mentor' %}"><input class="btn btn-primary" type="submit" value="Sign-up"></a>
-</div>    
+</div>
+  
+  
 
 {% endblock %}
 

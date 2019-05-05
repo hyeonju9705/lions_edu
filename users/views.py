@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.models import User
-from django.contrib import auth
 from .models import Mentee
 from .models import Mentor
+from django.contrib import auth
 from .models import Lesson
 # Create your views here.
 
@@ -12,10 +11,14 @@ from .models import Lesson
     
 def signup_mentor(request):
     if request.method == 'POST':
-        if request.POST['password1'] == request.POST['password2']:
-            mentor = Mentor.objects.create(name=request.POST['username'], password=request.POST['password1'])
-            auth.login(request, user)
-            return redirect('login_mentor')
+        name = request.POST.get('name')
+        age = request.POST.get('age')
+        gender = request.POST.get('gender')
+        subject = request.POST.get('subject')
+        place = request.POST.get('place')
+        text = request.POST.get('text')
+        mentor = Mentor(name=name, age=age, gender=gender, subject=subject, place=place, text=text)
+        mentor.save()
     return render(request, 'users/signup_mentor.html')
 
 
@@ -26,26 +29,25 @@ def login_mentor(request):
         user = auth.authenticate(request, username=username, password=password)
         if user is not None:
             auth.login(request, user)
-            return redirect('main_mentor')
         else:
-            return render(request, 'users/login_mentor.html', {'error': 'username or password is incorrect.'})
+            return render(request, 'users/main_mentor.html', {'error': 'username or password is incorrect.'})
     else:
         return render(request, 'users/login_mentor.html')
-        
-def logout_mentor(request):
-    if request.method == 'POST':
-        auth.logout(request)
-        return redirect('home')
-    return render(request, 'users/signup_mentor.html')
     
     
 ## mentee
 def signup_mentee(request):
     if request.method == 'POST':
-        if request.POST['password1'] == request.POST['password2']:
-            user = User.objects.create(username = request.POST['username'], password = request.POST['password1'])
-            auth.login(request, user)
-            return redirect('signup_2')
+        name = request.POST.get('name')
+        age = request.POST.get('age')
+        gender = request.POST.get('gender')
+        id_mentee = request.POST.get('id_mentee')
+        password = request.POST.get('password')
+        phone_number = request.POST.get('phone_number')
+        subject = request.POST.get('subject')
+        place = request.POST.get('place')
+        mentee = Mentee(name=name, age=age, gender=gender, id_mentee=id_mentee, password=password,  phone_number=phone_number, subject=subject, place=place)
+        mentee.save()
     return render(request, 'users/signup_mentee.html')
 
 
@@ -62,11 +64,6 @@ def login_mentee(request):
     else:
         return render(request, 'users/login_mentee.html')
         
-def logout_mentee(request):
-    if request.method == 'POST':
-        auth.logout(request)
-        return redirect('home')
-    return render(request, 'users/signup_mentee.html')
     
     
 def srcfilter(request):
@@ -87,8 +84,16 @@ def srcfilter(request):
     
     
 def main_mentor(request):
-    return render(request, 'users/main_mentor.html')
+    lessons = Lesson.objects.all()
+    return render(request, 'users/main_mentor.html', {'lessons':lessons })
+    #lessons = Lesson.objects.filter(
+     #   mentor_id = 1
+    #)
     
+def lesson_detail(request, id):
+    mentee = get_object_or_404(Mentee, pk=id)
+    mentee_name = mentee.name
+    return render(request, 'users/lesson_detail.html', {'mentee_name':mentee_name})
 
 def choice(request):
     if request.method == 'POST':
@@ -105,6 +110,3 @@ def lesson(request, id):
 def mentor_detail(request, id):
     mentor = get_object_or_404(Mentor, pk=id)
     return render(request, 'users/mentor_detail.html', {'mentor':mentor})
-
-def signup_2(request):
-    return render(request, 'users/signup_2.html')

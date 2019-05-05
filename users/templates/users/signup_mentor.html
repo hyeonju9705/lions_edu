@@ -2,11 +2,12 @@
 
 {% block content %}
 
-<h1>Sign Up!</h1>
+<h1>Welcome Mento!</h1>
 
 <form method="POST" action="{% url 'signup_mentor'%}">
 
 {% csrf_token %}
+
 이름:
 <br>
 <input name="username"  type="text" value="">
@@ -25,6 +26,7 @@
 <!--<br>-->
 <br>
 <input class="btn btn-primary" type="submit" value="Sign Up!"></a>
+
 </form>
 
 {% endblock %}

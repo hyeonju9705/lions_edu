@@ -1,1 +1,32 @@
-<h1>메인화면</h1>
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %} 
+<br><br><br>
+<div class="container">
+    <div class="content-section-heading text-center">
+        <h2 class="text-secondary mb-0">과외 신청 내역</h3>
+      </div>
+   
+      <div class="row">
+           {% for lesson in lessons %}
+        
+        <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+          <a href="{% url 'lesson_detail' lesson.id %}" style="all:unset;">
+          <span class="service-icon rounded-circle mx-auto mb-3">
+          <i class="icon-user"></i>
+          </span>
+          <h3>
+            <strong>{{ lesson.id }}</strong>
+          </h3>
+          <p class="text-faded mb-0">{{ lesson.text }}</p>
+          
+     
+          </a>
+        </div>
+        
+        {% endfor %}
+      </div>
+    
+  </div>
+
+{% endblock %}
