@@ -1,32 +1,89 @@
 {% extends 'base.html' %}
-
+{% load staticfiles %}
 {% block content %}
+<section class="content-section bg-primary text-center" id="services">
+    <div class="row div_signup">
+        <div>
+            <div>
+                <h3 class="text-secondary mb-3">회원 가입</h3>
+            </div>
+            <div>
+                <form action="{% url 'signup_mentor' %}" method="POST" style="display: flex;flex-direction: column;align-items: flex-end;">
+                    {% csrf_token %}
+                    <div>
+                    <label>ID</label>
+                    <input type="text" name="id_mentor" />
+                    </div>
+                    <div>
 
-<h1>Welcome Mento!</h1>
+                    <label>비밀번호</label>
+                    <input type="password" name="password" />
+                    
+                    </div>
+                    <div>
 
-<form method="POST" action="{% url 'signup_mentor'%}">
+                    <label>이름</label>
+                    <input type="text" name="name" />
+                    
+                    </div>
+  
+                    <div>
+                    <label>나이</label>
+                    <input type="text" name="age" />
+                    
+                    </div>
+            </div>
+        </div>
+        <div>
+            <h3>
+                <strong>지역</strong>
+            </h3>
 
-{% csrf_token %}
-
-이름:
-<br>
-<input name="username"  type="text" value="">
-<br>
-비밀번호:
-<br>
-<input name="password1"  type="password" value="">
-<br>
-비밀번호 확인:
-<br>
-<input name="password2"  type="password" value="">
-<br>
-<!--이메일:-->
-<!--<br>-->
-<!--<input name="useremail" type="email" value="">-->
-<!--<br>-->
-<br>
-<input class="btn btn-primary" type="submit" value="Sign Up!"></a>
-
-</form>
-
+            <span class="caption-content">
+                <center><input type="radio" name="place" id="loc1" value="seoul"><label
+                        for="loc1"><span></span>서울</label></center>
+                <center><input type="radio" name="place" id="loc2" value="kyeonggi"><label
+                        for="loc2"><span></span>경기</label></center>
+                <center><input type="radio" name="place" id="loc3" value="chungcheong"><label
+                        for="loc3"><span></span>충청</label></center>
+                <center><input type="radio" name="place" id="loc4" value="jeonra"><label
+                        for="loc4"><span></span>전라</label></center>
+                <center><input type="radio" name="place" id="loc5" value="kyeongsang"><label
+                        for="loc5"><span></span>경상</label></center>
+            </span><br>
+        </div>
+        <div>
+            <h3>
+                <strong>과목</strong>
+            </h3>
+            <span class="caption-content">
+                <center> <input type="radio" name="subject" id="sub1" value="korean"><label
+                        for="sub1"><span></span>국어</label></center>
+                <center> <input type="radio" name="subject" id="sub2" value="math"><label
+                        for="sub2"><span></span>수학</label></center>
+                <center> <input type="radio" name="subject" id="sub3" value="science"><label
+                        for="sub3"><span></span>과학</label></center>
+                <center> <input type="radio" name="subject" id="sub4" value="society"><label
+                        for="sub4"><span></span>사회</label></center>
+                <center> <input type="radio" name="subject" id="sub5" value="english"><label
+                        for="sub5"><span></span>영어</label></center>
+            </span><br>
+        </div>
+        <div>
+            <h3>
+                <strong>성별</strong>
+            </h3>
+            <span class="caption-content">
+                <input type="radio" name="gender" id="gender1" value="man"><label
+                    for="gender1"><span></span>남</label>
+                <input type="radio" name="gender" id="gender2" value="woman"><label
+                    for="gender2"><span></span>여</label>
+            </span><br>
+        </div>
+        <div class="div_select">
+           <input type="submit" value="가입" class="btn btn-xl btn-secondary">
+        </div>
+    </div>
+    </form>
+</section>
 {% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if error %}
+{{ error }}
+<br>
+<br>
+{% endif %}
+<div class="mt-5">
+<p style="text-align: center; font-size:75px; color:#30ABD0;">Login</p>
+<div class="login_div">
+    <form action="{%url 'login'%}" method="POST">
+    <div class="row div_signin">
+        <div class="mx-2">
+        <center><input type="radio" name="men" id="men1" value="mentor" checked="checked" placeholder="아이디를 입력해주세요."><label for="men1" style="color:black" ><span></span>Mentor</label></center>
+        </div>
+        <div class="mx-2">
+        <center><input type="radio" name="men" id="men2" value="mentee" ><label for="men2" style="color:black"><span></span>Mentee</label></center>
+        </div>
+    </div>
+    <br>
+        {% csrf_token %}
+        <div class="mb-3">
+        <p style="text-align: center">Username:</p>
+        <br>
+        <input name="username" type="text" value="">
+        <br>
+        </div>
+        <div class="mb-5">
+        Password:
+        <br>
+        <input name="password" type="password" value="">
+        </div>
+        
+        <input class="btn btn-primary" type="submit" value="Login">
+        <br>
+        <br>
+    </form>
+</div>
+</div>
+{% endblock %}
+

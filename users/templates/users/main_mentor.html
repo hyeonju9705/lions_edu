@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block content %} 
-<br><br><br>
+<section class="content-section bg-primary text-white text-center" id="services">
 <div class="container">
     <div class="content-section-heading text-center">
-        <h2 class="text-secondary mb-0">과외 신청 내역</h3>
+        <h2 class="text-secondary mb-0">과외 신청 내역</h2>
       </div>
+      <br>
    
       <div class="row">
            {% for lesson in lessons %}
@@ -18,9 +19,8 @@
           <h3>
             <strong>{{ lesson.id }}</strong>
           </h3>
+         <p class="text-faded mb-0">{{ lesson.phone_number }}</p>
           <p class="text-faded mb-0">{{ lesson.text }}</p>
-          
-     
           </a>
         </div>
         
@@ -28,5 +28,5 @@
       </div>
     
   </div>
-
+</section>
 {% endblock %}

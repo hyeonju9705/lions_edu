@@ -14,25 +14,36 @@ def signup_mentor(request):
         name = request.POST.get('name')
         age = request.POST.get('age')
         gender = request.POST.get('gender')
+        id_mentor = request.POST.get('id_mentor')
+        password = request.POST.get('password')
         subject = request.POST.get('subject')
         place = request.POST.get('place')
-        text = request.POST.get('text')
-        mentor = Mentor(name=name, age=age, gender=gender, subject=subject, place=place, text=text)
+        mentor = Mentor(name=name, age=age, gender=gender, id_mentor=id_mentor, password=password, subject=subject, place=place)
         mentor.save()
+        return redirect('login')
     return render(request, 'users/signup_mentor.html')
 
 
-def login_mentor(request):
+def login(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
         user = auth.authenticate(request, username=username, password=password)
-        if user is not None:
-            auth.login(request, user)
+        # if user is not None:
+        #     print("@@@@@@1")
+        #     auth.login(request, user)
+        #     print("@@@@@@2")
+        # else:
+        #     print("@@@@@@!!!!!!!!!!!")
+        #     return render(request, 'users/main_mentor.html', {'error': 'username or password is incorrect.'})
+            
+        userSelection = request.POST['men']
+        if userSelection == 'mentee':
+            return render(request, 'users/srcfilter.html')
         else:
-            return render(request, 'users/main_mentor.html', {'error': 'username or password is incorrect.'})
+            return render(request, 'users/main_mentor.html')
     else:
-        return render(request, 'users/login_mentor.html')
+        return render(request, 'users/login.html')
     
     
 ## mentee
@@ -48,23 +59,9 @@ def signup_mentee(request):
         place = request.POST.get('place')
         mentee = Mentee(name=name, age=age, gender=gender, id_mentee=id_mentee, password=password,  phone_number=phone_number, subject=subject, place=place)
         mentee.save()
+        return redirect('login')
     return render(request, 'users/signup_mentee.html')
 
-
-def login_mentee(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        mentee = auth.authenticate(request, username=username, password=password)
-        if user is not None:
-            auth.login(request, user)
-            return redirect('main_mentee')
-        else:
-            return render(request, 'users/login_mentee.html', {'error': 'username or password is incorrect.'})
-    else:
-        return render(request, 'users/login_mentee.html')
-        
-    
     
 def srcfilter(request):
     if request.method == 'POST':
@@ -84,23 +81,17 @@ def srcfilter(request):
     
     
 def main_mentor(request):
-    lessons = Lesson.objects.all()
+    lessons = Lesson.objects.filter(
+        mentor_id = 1
+    )
     return render(request, 'users/main_mentor.html', {'lessons':lessons })
-    #lessons = Lesson.objects.filter(
-     #   mentor_id = 1
-    #)
+    
     
 def lesson_detail(request, id):
-    mentee = get_object_or_404(Mentee, pk=id)
-    mentee_name = mentee.name
-    return render(request, 'users/lesson_detail.html', {'mentee_name':mentee_name})
-
-def choice(request):
-    if request.method == 'POST':
-        pk = request.POST['user_id']
-        # if request.POST.name == "mentee":
-    return render(request, 'users/choice.html')
-    
+    lesson = get_object_or_404(Lesson, pk=id)
+    phonenumber = lesson.phone_number
+    return render(request, 'users/lesson_detail.html', {'phonenumber':phonenumber})
+   
     
 def lesson(request, id):
     mentor = get_object_or_404(Mentor, pk=id)
@@ -110,3 +101,21 @@ def lesson(request, id):
 def mentor_detail(request, id):
     mentor = get_object_or_404(Mentor, pk=id)
     return render(request, 'users/mentor_detail.html', {'mentor':mentor})
+    
+    
+
+
+def login_mentee(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = auth.authenticate(request, username=username, password=password)
+        if user is not None:
+            print("@@@@@@1")
+            auth.login(request, user)
+            print("@@@@@@2")
+        else:
+            print("@@@@@@!!!!!!!!!!!")
+            return render(request, 'users/srcfilter.html', {'error': 'username or password is incorrect.'})
+    else:
+        return render(request, 'users/login_mentee.html')

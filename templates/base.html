@@ -34,16 +34,16 @@
 <body id="page-top">
   <!-- Navigation -->
    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="list_mentor">lions_edu</a>
+      <div class="navbar-brand">lions_edu</div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse flex" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-item nav-link active" href="">홈 <span class="sr-only">(current)</span></a>
-          <a class="nav-item nav-link active" href="">멘토</a>
-          <a class="nav-item nav-link active" href="">멘티</a>
-          <a class="nav-item nav-link active" href="">로그인</a>
+          <a class="nav-item nav-link active" href='{% url "home" %}'>홈 <span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link active" href='{% url "srcfilter" %}'>멘토찾기</a>
+          <a class="nav-item nav-link active" href='{% url "login" %}'>멘티찾기</a>
+          
         </div>
         <div class="navbar-nav">
           <img style="height: 40px"  src="/static/img/basiclogo_E_H.png" alt="basic logo"></img>
