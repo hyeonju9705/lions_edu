@@ -54,7 +54,7 @@ class Mentor(models.Model):
     science = 'science'
     society = 'society'
     english = 'english'
-    subject_choices = ((korean, 'korean'), (math, 'math'), (science, 'science'), (society, 'society'), (english, 'english'),)
+    subject_choices = ((korean, 'korean'), (math, 'math'), (science, 'science'), (society, 'society'), (english, 'english'))
     
     name = models.CharField(max_length=100) #회원가입
     age = models.CharField(max_length=50) #회원가입
@@ -71,6 +71,11 @@ class Mentor(models.Model):
         
     #멘토 평점, 매칭 여부 상태
     
+class Choice(models.Model):
+    mentor = 'mentor'
+    mentee = 'mentee'
+    m_choices = ((mentor, 'mentor'), (mentee, 'mentee'))
+    
     
 class Lesson(models.Model):
     man = 'man'
@@ -82,7 +87,7 @@ class Lesson(models.Model):
     chungcheong ='chungcheong'
     jeonra = 'jeonra'
     kyeongsang = 'kyeongsang'
-    place_choices = ((seoul, 'seoul'), (kyeonggi, 'kyeonggi'), (chungcheong, 'chungcheong'), (jeonra, 'jeonra'), (kyeongsang, 'kyeongsang',))
+    place_choices = ((seoul, 'seoul'), (kyeonggi, 'kyeonggi'), (chungcheong, 'chungcheong'), (jeonra, 'jeonra'), (kyeongsang, 'kyeongsang'))
     
     
     

@@ -7,17 +7,21 @@
 <form method="POST" action="{% url 'signup_mentor'%}">
 
 {% csrf_token %}
-Username:
+이름:
 <br>
 <input name="username"  type="text" value="">
 <br>
-Password:
+비밀번호:
 <br>
 <input name="password1"  type="password" value="">
 <br>
-Confirm Password:
+비밀번호 확인:
 <br>
 <input name="password2"  type="password" value="">
+<br>
+이메일:
+<br>
+<input name="useremail" type="email" value="">
 <br>
 <br>
 <input class="btn btn-primary" type="submit" value="Sign Up!"></a>

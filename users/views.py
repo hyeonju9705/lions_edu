@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-#from django.contrib.auth import get_user_Mentee, get_Mentor
 from django.contrib import auth
 from .models import Mentee
 from .models import Mentor
@@ -13,7 +12,7 @@ from .models import Mentor
 def signup_mentor(request):
     if request.method == 'POST':
         if request.POST['password1'] == request.POST['password2']:
-            mentor = Mentor.objects.create(name=request.POST['username'], password=request.POST['password1'])
+            mentor = Mentor.objects.create(name=request.POST['username'], password=request.POST['password1'], email=request.POST['useremail'])
             auth.login(request, user)
             return redirect('login_mentor')
     return render(request, 'users/signup_mentor.html')
@@ -93,5 +92,12 @@ def main_mentor(request):
     return render(request, 'users/main_mentor.html')
     
 
+    
+
 def lesson(request):
     return render(request, 'users/lesson.html')
+    
+
+def mentor_detail(request):
+    return render(request, 'users/mentor_detail.html')
+    

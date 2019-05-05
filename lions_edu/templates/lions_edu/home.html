@@ -19,55 +19,8 @@
   </header>
 
 
-<h1>Lion's Edu</h1>
+
     
-    <div class="container">
-
-        <div class="row home-card-section">
-            <div class="col-md-6">
-                <div class="home-card" style="width: 100%;">
-                    <a href="{% url 'login_mentee' %}" target='_blank' role='button'
-                        STYLE='text-decoration: none; color : black'>
-
-                        <div class="card-body">
-                            {% if user.is_authenticated %}
-                            
-                            <p class="card-text">학생</p>
-                            <span>로그인 됨</span>
-                            {% else %}
-                            <span>로그인 안됨.</span>
-                            {% endif %}
-                        </div>
-                    </a>
-                </div>
-
-                <div class="card-body">
-
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="home-card" style="width: 100%;">
-                    <a href="{% url 'login_mentor' %}" target='_blank' role='button'
-                        STYLE='text-decoration: none; color : black'>
-
-                        <div class="home-card-body">
-                            {% if user.is_authenticated %}
-                            
-                            {% else %}
-                            
-                            <p class="card-text">선생</p>
-                            
-                            {% endif %}
- 
-                        </div>
-                    </a>
-                </div>
-              
-
-            </div>
-        </div>
-    </div>
-    </div>
 {% endblock %}
 
     
