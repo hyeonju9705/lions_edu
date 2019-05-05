@@ -12,7 +12,9 @@
      
       <div class="row">
            {% for mentor in mentor_set %}
+        
         <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+          <a href="{% url 'mentor_detail' mentor.id %}" style="all:unset;">
           <span class="service-icon rounded-circle mx-auto mb-3">
           <i class="icon-user"></i>
           </span>
@@ -22,8 +24,9 @@
           <p class="text-faded mb-0">{{ mentor.subject }}</p>
           <p class="text-faded mb-0, text-warning">{{ mentor.place }}</p>
      
-
+          </a>
         </div>
+        
         {% endfor %}
       </div>
       

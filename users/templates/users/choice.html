@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h3>당신은 누구입니까?</h3>
+
+<form method="POST" action="{% url 'choice' %}">
+    {% csrf_token %}
+    <input type="hidden" value="{{ user.id }}" name="temp">
+    <center><input type="radio" value="Mentor" name="mentor"/></center>
+    <center><input type="radio" value="Mentee" name="mentee"/></center><br>
+    <input type="submit" value="다음" name="next"/> 
+</form>
+
+{% endblock %}

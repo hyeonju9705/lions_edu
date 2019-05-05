@@ -1,8 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib import auth
 from .models import Mentee
 from .models import Mentor
+from .models import Lesson
 # Create your views here.
 
 #def list_mentor(request):
@@ -12,7 +13,7 @@ from .models import Mentor
 def signup_mentor(request):
     if request.method == 'POST':
         if request.POST['password1'] == request.POST['password2']:
-            mentor = Mentor.objects.create(name=request.POST['username'], password=request.POST['password1'], email=request.POST['useremail'])
+            mentor = Mentor.objects.create(name=request.POST['username'], password=request.POST['password1'])
             auth.login(request, user)
             return redirect('login_mentor')
     return render(request, 'users/signup_mentor.html')
@@ -42,13 +43,10 @@ def logout_mentor(request):
 def signup_mentee(request):
     if request.method == 'POST':
         if request.POST['password1'] == request.POST['password2']:
-            mentee = Mentee.objects.create(name = request.POST['username'], password = request.POST['password1'])
+            user = User.objects.create(username = request.POST['username'], password = request.POST['password1'])
             auth.login(request, user)
-            return redirect('login_mentee')
+            return redirect('signup_2')
     return render(request, 'users/signup_mentee.html')
-    
-    
-
 
 
 def login_mentee(request):
@@ -56,7 +54,7 @@ def login_mentee(request):
         username = request.POST['username']
         password = request.POST['password']
         mentee = auth.authenticate(request, username=username, password=password)
-        if mentee is not None:
+        if user is not None:
             auth.login(request, user)
             return redirect('main_mentee')
         else:
@@ -92,12 +90,21 @@ def main_mentor(request):
     return render(request, 'users/main_mentor.html')
     
 
+def choice(request):
+    if request.method == 'POST':
+        pk = request.POST['user_id']
+        # if request.POST.name == "mentee":
+    return render(request, 'users/choice.html')
+    
+    
+def lesson(request, id):
+    mentor = get_object_or_404(Mentor, pk=id)
+    return render(request, 'users/lesson.html', {'mentor':mentor})
     
 
-def lesson(request):
-    return render(request, 'users/lesson.html')
-    
+def mentor_detail(request, id):
+    mentor = get_object_or_404(Mentor, pk=id)
+    return render(request, 'users/mentor_detail.html', {'mentor':mentor})
 
-def mentor_detail(request):
-    return render(request, 'users/mentor_detail.html')
-    
+def signup_2(request):
+    return render(request, 'users/signup_2.html')

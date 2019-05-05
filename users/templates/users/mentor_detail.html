@@ -1,26 +1,32 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block content %} 
+<br><br><br>
 <div class="container">
     <div class="content-section-heading text-center">
         <h2 class="text-secondary mb-0">멘토 상세 내용</h3>
       </div>
+      <form action="{% url 'lesson' mentor.id %}" method="POST">
+          {% csrf_token %}
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
          <div class="row">
-                    <div class="col">
-                            이름:<input type="text" class="form-control" id="firstName" placeholder="" value="홍길동" required="" rows=5px >
-                            나이:<input type="text" class="form-control" id="firstName" placeholder="" value="27" required="">
-                            과목:<input type="radio" name='' checked>국
-                            <input type="radio" name='' >영
-                            <input type="radio" name='' >수
-                            <br>연락처:<input type="text" class="form-control" id="firstName" placeholder="" value="010-1234-5678" required="">
-                            지역:<input type="text" class="form-control" id="firstName" placeholder="" value="서울 노원구" required="">
-                            성별:<input type="text" class="form-control" id="firstName" placeholder="" value="남" required="">
+             <div class="col">
+                            이름:<input type="text" class="form-control" id="firstName" placeholder="" value={{mentor.name}} required="" rows=5px >
+                            나이:<input type="text" class="form-control" id="firstName" placeholder="" value={{mentor.age}} required="">
+                            과목:<input type="text" class="form-control"  value={{mentor.subject}} checked>
+                           
+                            <br>연락처:<input type="text" class="form-control" id="firstName" placeholder="" value={{mentor.phone_number}} required="">
+                            지역:<input type="text" class="form-control" id="firstName" placeholder="" value={{mentor.place}} required="">
+                            성별:<input type="text" class="form-control" id="firstName" placeholder="" value={{mentor.gender}} required="">
+                          
                     </div>
+                 
+                   <input type="submit" value="신청" class="btn btn-xl btn-secondary">
                 </div>
       </div>
     </div>
+    </form>
   </div>
 
 

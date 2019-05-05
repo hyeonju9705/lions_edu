@@ -61,6 +61,7 @@ class Mentor(models.Model):
     gender = models.CharField(max_length=5, choices=gender_choices) #회원가입
     subject = models.CharField(max_length=10, choices=subject_choices) #등록
     place = models.CharField(max_length=15, choices=place_choices)
+    phone_number = models.CharField(max_length=12)
     license = models.FileField(upload_to='uploads/')
     text = models.TextField()
     user = models.ForeignKey(get_user_model(), on_delete="CASCADE", default=1)

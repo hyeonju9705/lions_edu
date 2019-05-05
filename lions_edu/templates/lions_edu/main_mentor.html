@@ -1,11 +1,19 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block content %} 
+  <header class="masthead d-flex">
+    <div class="container text-center my-auto">
+      <h1 class="mb-1">Welcome</h1>
+      <h3 class="mb-5">
+        
+      </h3>
+            <a href="{% url 'login_mentor' %}" class="btn btn-primary btn-xl js-scroll-trigger">추가</a></a>
+        
+        
+            <a href="{% url 'signup_mentor' %}" class="btn btn-primary btn-xl js-scroll-trigger">검색</a></a>         
+      
 
-<h1>메인화면</h1>
-
-<a href="{% url 'search'%}"><h2>검색</h2></a>
-
-<h2>추가</h2>
-
-{% endblock %}
+    </div>
+    <div class="overlay"></div>
+  </header>
+{% endblock %} 

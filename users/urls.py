@@ -10,6 +10,8 @@ urlpatterns = [
     path('signup_mentee/', views.signup_mentee, name="signup_mentee"),
     path('signup_mentor/', views.signup_mentor, name="signup_mentor"),
     path('main_mentor/', views.main_mentor, name="main_mentor"),
-    path('lesson/', views.lesson, name="lesson"),
-    path('mentor_detail/', views.mentor_detail, name="mentor_detail"),
+    path('lesson/<int:id>/', views.lesson, name="lesson"),
+    path('mentor_detail/<int:id>/', views.mentor_detail, name="mentor_detail"),
+    path('choice/', views.choice, name="choice"),
+    path('signup_2/', views.signup_2, name="signup_2"),
 ]

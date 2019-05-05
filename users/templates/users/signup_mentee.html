@@ -3,17 +3,17 @@
 {% block content %}
 
 <h1>Sign Up!</h1>
-
+{{ user.id }}
 <form method="POST" action="{% url 'signup_mentee'%}">
 
 {% csrf_token %}
     Username:
     <br>
-    <input name="username"  type="text" value="{{ product.username }}">
+    <input name="username"  type="text" value="{{ user.username }}">
     <br>
     Password:
     <br>
-    <input name="password1"  type="password" value="{{ product.password }}">
+    <input name="password1"  type="password" value="{{ user.password }}">
     <br>
     Confirm Password:
     <br>
@@ -21,6 +21,7 @@
     <br>
     <br>
     <input class="btn btn-primary" type="submit" value="Sign Up!"></a>
+
     </form>
 
 {% endblock %}
