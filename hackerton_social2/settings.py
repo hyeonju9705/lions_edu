@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'lions_edu',
     'users',
+    'accounts.apps.AccountsConfig'
 ]
 
 MIDDLEWARE = [

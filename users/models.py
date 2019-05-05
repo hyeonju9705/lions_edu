@@ -1,5 +1,6 @@
 from django.db import models
 from django import forms
+from django.core.validators import MaxValueValidator, MinValueValidator
 # Create your models here.
 
 class Mentee(models.Model):
@@ -22,7 +23,6 @@ class Mentee(models.Model):
     subject_choices = ((korean, 'korean'), (math, 'math'), (science, 'science'), (society, 'society'), (english, 'english'),) 
     
     
-    
     name = models.CharField(max_length=100) #회원가입
     age = models.CharField(max_length=50) #회원가입
     gender = models.CharField(max_length=5, choices=gender_choices) #회원가입
@@ -30,6 +30,9 @@ class Mentee(models.Model):
     subject = models.CharField(max_length=10, choices=subject_choices) #등록
     place = models.CharField(max_length=15, choices=place_choices) #등록
     text = models.TextField() #등록
+    grade = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
+    
+
     
 
 class Mentor(models.Model):

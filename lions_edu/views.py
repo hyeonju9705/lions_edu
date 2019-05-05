@@ -19,4 +19,10 @@ def main_mentor(request):
 def register(request):
     return render(request, 'lions_edu/register.html')
     
+def search(request):
+    return render(request, 'lions_edu/search.html')
+    
+def list_mentor(request):
+    return render(request, 'lions_edu/list_mentor.html')
+    
     
