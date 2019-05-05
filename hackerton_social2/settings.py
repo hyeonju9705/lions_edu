@@ -38,8 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'lions_edu',
-    'users',
-    'accounts.apps.AccountsConfig'
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -121,7 +120,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, STATIC_URL)
 
 # 각 media 파일에 대한 URL Prefix
 MEDIA_URL = '/media/' # 항상 / 로 끝나도록 설정

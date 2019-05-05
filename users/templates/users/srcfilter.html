@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %} 
+<section class="content-section bg-primary text-center" id="services">
+    <div class="container">
+      <div class="content-section-heading">
+        <h3 class="text-secondary mb-3">검색필터</h3>
+        <h2 class="mb-5">원하는 멘토를 선택하세요</h2>
+      </div>
+      <div class="row">
+        <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+          
+          <h4>
+            <strong>지역</strong>
+          </h4>
+          <span class="caption-content">
+                <form action="" method="POST">
+                   {% csrf_token %}
+                  <input type="checkbox" name="options" id="option1" value="">  오스트리아
+                  <input type="checkbox" name="options" id="option2" value="">  크로아티아
+                  <input type="checkbox" name="options" id="option3" value="">  체코
+                  <input type="checkbox" name="options" id="option2" value="">  헝가리
+                  <input type="hidden" name="ran_nation" value={{selected_pic}}>
+                  <input type="hidden" name="redirect_path" value={{request.path}}>
+                  <input type="submit" value="선택">
+                </form>
+              </span>
+          <p class="text-faded mb-0">Looks great on any screen size!</p>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+         
+          <h4>
+            <strong>과목</strong>
+          </h4>
+          <p class="text-faded mb-0">Freshly redesigned for Bootstrap 4.</p>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+          
+          <h4>
+            <strong>성별</strong>
+          </h4>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

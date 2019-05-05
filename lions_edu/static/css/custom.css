@@ -1,0 +1,23 @@
+@font-face {
+            font-family: 'S-CoreDream-9Black';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-9Black.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+.home-card-section {
+    font-family: 'S-CoreDream-9Black';
+    margin-top: 100px!important;
+}
+.home-card{
+    font-family: 'S-CoreDream-9Black';
+    background-color: #ffc107; height:500px;
+}
+.home-card-text{
+    font-family: 'S-CoreDream-9Black';
+    font-size:100px; 
+    text-align: center; margin-top: 130px;}
+ h1{
+     font-size:200px; text-align:center;
+      font-family: 'S-CoreDream-9Black';
+ }
+ 

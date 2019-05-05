@@ -16,11 +16,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from lions_edu import views
+#from users import views
 from django.conf import settings
 from django.conf.urls.static import static
+from lions_edu import urls as lionsedu_urls
+from users import urls as users_urls
+#from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home),
-    path('', include('lions_edu.urls')),
+    # path('', include('lions_edu.urls')),
+    path('lions_edu/', include(lionsedu_urls)),
+    path('users/', include(users_urls)),
+    
 ]
